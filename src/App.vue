@@ -1,15 +1,15 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloI18n/>
-    <localeChanger></localeChanger>
+    <v-card>
+      <HelloI18n/>
+      <localeChanger></localeChanger>
+    </v-card>
   </div>
 </template>
 
 <script>
 import HelloI18n from "./components/HelloI18n";
 import localeChanger from "./components/localeChanger"
-
 export default {
   name: 'app',
   components: {
