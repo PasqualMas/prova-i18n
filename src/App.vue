@@ -1,27 +1,28 @@
 <template>
-  <div id="app">
-    <v-card>
-      <HelloI18n/>
+  <v-app>
+    <v-card max-width="400" class="pa-4" style="margin: auto">
+      <v-card-title>{{ $t('hello') }}</v-card-title>
       <localeChanger></localeChanger>
     </v-card>
-  </div>
+  </v-app>
 </template>
 
 <script>
-import HelloI18n from "./components/HelloI18n";
-import localeChanger from "./components/localeChanger"
+import localeChanger from "./components/localeChanger";
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    HelloI18n,
     localeChanger
-  }
-}
+  },
+  data: () => ({
+    items: ["Foo", "Bar", "Fizz", "Buzz"]
+  }) 
+};
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

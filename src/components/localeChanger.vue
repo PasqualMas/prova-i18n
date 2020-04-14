@@ -1,32 +1,36 @@
 <template>
-  <v-container>
-    <v-btn v-for="(lang, idx) in langs" 
-           :key=idx
-           @click="$i18n.locale = lang.str"
-    >
-    <v-icon left>{{lang.ico}}</v-icon>
-      {{lang.str}}
-      </v-btn>
-  </v-container>
+  <v-select :items="items" 
+            v-model="languageSelected"
+            @change="$i18n.locale = languageSelected"
+            :label="$t('select')">
+    </v-select>
 </template>
 
-<script>  
+<script>
 export default {
-  name: 'locale-changer',
-  data () {
+  name: "locale-changer",
+  data() {
     return {
-       dialog: null,
-       langs: [
-         {
-           str: 'en',
-           ico: '🇬🇧',
-         },
-         { 
-           str: 'es',
-           ico: '🇪🇸'
-         }
-         ]
+      languageSelected: null,
+      langs: [
+        {
+          str: "en",
+          ico: "🇬🇧"
+        },
+        {
+          str: "es",
+          ico: "🇪🇸"
         }
-  }
-}
+      ]
+    };
+  },
+  computed: {
+    items() {
+      let arr = this.langs.map(obj => {
+        return obj.str;
+      });
+      return arr;
+    }
+  },
+};
 </script>
