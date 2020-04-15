@@ -1,36 +1,35 @@
 <template>
-  <v-select :items="items" 
-            v-model="languageSelected"
-            @change="$i18n.locale = languageSelected"
-            :label="$t('select')">
-    </v-select>
+  <v-select :items="items" v-model="langSelected" :label="$t('select')">
+    <template slot="item" slot-scope="data">
+      <img :src="`https://www.countryflags.io/${getFlag(data.item)}/shiny/32.png`" class="mr-2" />
+      {{data.item}}
+    </template>
+  </v-select>
 </template>
 
 <script>
 export default {
   name: "locale-changer",
+  created() {
+    let langName = this.$i18n.locale === 'en' ? 'English' : 'Español'
+    this.langSelected = langName
+  },
   data() {
     return {
-      languageSelected: null,
-      langs: [
-        {
-          str: "en",
-          ico: "🇬🇧"
-        },
-        {
-          str: "es",
-          ico: "🇪🇸"
-        }
-      ]
+      langSelected: null,
+      items: ["English", "Español"]
     };
   },
-  computed: {
-    items() {
-      let arr = this.langs.map(obj => {
-        return obj.str;
-      });
-      return arr;
+  methods: {
+    getFlag(lang) {
+      return lang === "English" ? "gb" : "es";
     }
   },
+  watch: {
+    langSelected(val) {
+      let langCode = val === "English" ? "en" : "es";
+      this.$i18n.locale = langCode;
+    }
+  }
 };
 </script>

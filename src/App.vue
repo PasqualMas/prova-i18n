@@ -1,8 +1,14 @@
 <template>
   <v-app>
-    <v-card max-width="400" class="pa-4" style="margin: auto">
-      <v-card-title>{{ $t('hello') }}</v-card-title>
-      <localeChanger></localeChanger>
+    <v-card width="400" class="pa-4" style="margin: auto">
+      <v-row>
+        <v-col cols="8">
+          <v-card-title>{{ $t('hello') }}</v-card-title>
+        </v-col>
+        <v-col cols="4">
+          <localeChanger></localeChanger>
+        </v-col>
+      </v-row>
     </v-card>
   </v-app>
 </template>
@@ -16,7 +22,7 @@ export default {
   },
   data: () => ({
     items: ["Foo", "Bar", "Fizz", "Buzz"]
-  }) 
+  })
 };
 </script>
 
